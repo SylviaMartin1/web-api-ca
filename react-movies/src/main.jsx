@@ -22,6 +22,8 @@ import MoviesPlayingInTheatresPage from './pages/moviesPlayingInTheatresPage';
 import MustWatchPage from './pages/mustWatchPage';
 import theme from './theme'
 import { ThemeProvider } from '@mui/material/styles';
+import AuthContextProvider from "./contexts/authContext";
+import ProtectedRoutes from "./protectedRoutes";
 import './index.css';
 
 // 2. Main Functionality
@@ -37,6 +39,7 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <AuthContextProvider>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
@@ -55,13 +58,16 @@ const App = () => {
             <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
+            <Route element={<ProtectedRoutes />}>
             <Route path="/movies/home" element={<HomePage />} />
+            </Route>
             <Route path="*" element={ <Navigate to="/" /> } />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+    </AuthContextProvider>
     </ThemeProvider>
   );
 };
