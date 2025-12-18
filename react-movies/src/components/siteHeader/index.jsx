@@ -32,7 +32,7 @@ const SiteHeader = () => {
   const navigate = useNavigate();
 
   const menuOptions = [
-    { label: <HomeIcon />, path: "/" , title: "Home"}, //Home page
+    { label: <HomeIcon />, path: "/movies/home" , title: "Home"}, //Home page
     { label: <WhatshotIcon />, path: "/movies/trending", title: "Trending Movies" }, //Trending Movies page
     { label: <MilitaryTechIcon />, path: "/movies/topRated", title: "Top Rated Movies" }, //Top Rated Movies page
     { label: <TheatersIcon />, path: "/movies/nowPlayingInTheatres", title: "In Theatres" }, //In Theatre Movies page
