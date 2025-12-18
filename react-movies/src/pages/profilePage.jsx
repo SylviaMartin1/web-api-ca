@@ -8,11 +8,11 @@ const ProfilePage = () => {
     const navigate = useNavigate();
   
     return context.isAuthenticated ? (
-        <p>
+        <p style={{ color: "white" }}>
             User profile: {context.userName}
         </p>
     ) : (
-        <p>
+        <p style={{ color: "white" }}>
             You must log in to see your profile! {" "}
             <button onClick={() => navigate('/login')}>Login</button>
       </p>
