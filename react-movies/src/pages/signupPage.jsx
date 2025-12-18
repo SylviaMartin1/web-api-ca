@@ -9,12 +9,23 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
   const [registered, setRegistered] = useState(false);
+  const [usernameError, setUsernameError ] = useState("")
   
   const register = async () => {
+
+    let usernameRegEx = /^[a-zA-Z0-9]{3,20}$/;
+    const validUserName = usernameRegEx.test(userName)
+    if (!validUserName) {
+      setUsernameError("Username must be 3-20 characters and contain only letters and numbers.");
+    }
+
+
+
+
     let passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     const validPassword = passwordRegEx.test(password);
 
-    if (validPassword && password === passwordAgain) {
+    if (validUserName && validPassword && password === passwordAgain) {
       let result = await context.register(userName, password);
       setRegistered(result);
     }
