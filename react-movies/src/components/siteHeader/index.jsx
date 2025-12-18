@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -16,6 +16,7 @@ import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
+import { AuthContext } from "../../contexts/authContext";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Tooltip from '@mui/material/Tooltip';
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
@@ -28,7 +29,8 @@ const SiteHeader = () => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  
+
+  const context = useContext(AuthContext);
   const navigate = useNavigate();
 
   const menuOptions = [
@@ -85,8 +87,9 @@ const SiteHeader = () => {
                   open={open}
                   onClose={() => setAnchorEl(null)}
                 >
+                {context.isAuthenticated ? (
+                   <>  
                   {menuOptions.map((opt) => (
-                    
                     <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
@@ -94,9 +97,19 @@ const SiteHeader = () => {
                       {opt.title}
                     </MenuItem>
                   ))}
+                  </>
+                 ) : (
+                   <>
+                    <MenuItem onClick={() => handleMenuSelect("/login")}>Login</MenuItem>
+                    <MenuItem onClick={() => handleMenuSelect("/signup")}>Signup</MenuItem>
+                  </>
+                  )}
                 </Menu>
               </>
-            ) : (
+              ): null}
+
+            {!isMobile && (
+            context.isAuthenticated ? (
               <>
                 {menuOptions.map((opt) => (
                   <Tooltip key={opt.path} title={opt.title} arrow>
@@ -114,7 +127,24 @@ const SiteHeader = () => {
                   </Button>
                   </Tooltip>
                 ))}
+
+                <Typography sx={{ ml: 2 }}>
+                  Welcome {context.userName}!
+                  <Button color="inherit" onClick={context.signout} sx={{ ml: 1 }}>
+                    Sign out
+                  </Button>
+                </Typography>
               </>
+               ) : (
+              <>
+                <Button color="inherit" onClick={() => handleMenuSelect("/login")} sx={{ '&:hover': { color: 'yellow' } }}>
+                  Login
+                </Button>
+                <Button color="inherit" onClick={() => handleMenuSelect("/signup")} sx={{ '&:hover': { color: 'yellow' } }}>
+                  Signup
+                </Button>
+              </>
+               )
             )}
         </Toolbar>
       </AppBar>
