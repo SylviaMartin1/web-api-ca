@@ -10,6 +10,8 @@ const SignUpPage = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [registered, setRegistered] = useState(false);
   const [usernameError, setUsernameError ] = useState("")
+  const [passwordError, setPasswordError ] = useState("")
+  const [passwordMatchError, setPasswordMatchError] = useState("");
   
   const register = async () => {
 
@@ -20,10 +22,15 @@ const SignUpPage = () => {
     }
 
 
-
-
     let passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     const validPassword = passwordRegEx.test(password);
+     if (!validPassword) {
+      setPasswordError("Password must be at least 8 chars, include uppercase, lowercase, number, and symbol.");
+    }
+
+     if (password !== passwordAgain) {
+      setPasswordMatchError("Passwords do not match.");
+    }
 
     if (validUserName && validPassword && password === passwordAgain) {
       let result = await context.register(userName, password);
@@ -42,12 +49,19 @@ const SignUpPage = () => {
       <input value={userName} placeholder="user name" onChange={e => {
         setUserName(e.target.value);
       }}></input><br />
+      {usernameError && <p style={{color: "red"}}>{usernameError}</p>}
+
+
       <input value={password} type="password" placeholder="password" onChange={e => {
         setPassword(e.target.value);
       }}></input><br />
+      {passwordError && <p style={{color: "red"}}>{passwordError}</p>}
+
       <input value={passwordAgain} type="password" placeholder="password again" onChange={e => {
         setPasswordAgain(e.target.value);
       }}></input><br />
+      {passwordMatchError && <p style={{color: "red"}}>{passwordMatchError}</p>}
+
       {/* Login web form  */}
       <button onClick={register}>Register</button>
     </>
