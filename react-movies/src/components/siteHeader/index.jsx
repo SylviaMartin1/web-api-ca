@@ -20,6 +20,7 @@ import { AuthContext } from "../../contexts/authContext";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Tooltip from '@mui/material/Tooltip';
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
+import Person2Icon from '@mui/icons-material/Person2';
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -41,6 +42,7 @@ const SiteHeader = () => {
     { label: <MovieIcon />, path: "/movies/upcoming", title: "Upcoming Movies" }, //Upcoming Movies page
     { label: <FavoriteIcon />, path: "/movies/favorites", title: "Favourites" }, //Favourite page
     { label: <PlaylistPlayIcon />, path: "/movies/mustWatch", title: "Watchlist" }, //Watchlist page
+    { label: <Person2Icon />, path: "/profile" , title: "Profile"}, //Profile page
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -130,7 +132,7 @@ const SiteHeader = () => {
 
                 <Typography sx={{ ml: 2 }}>
                   Welcome {context.userName}!
-                  <Button color="inherit" onClick={context.signout} sx={{ ml: 1 }}>
+                  <Button color="inherit" onClick={context.signout}  sx={{ ml: 1 }}>
                     Sign out
                   </Button>
                 </Typography>

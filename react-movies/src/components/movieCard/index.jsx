@@ -103,7 +103,7 @@ export default function MovieCard({ movie, action }) {
       </CardContent>
         { <CardActions disableSpacing>
           {action(movie)}
-          <Link to={`/movies/${movie.id}`}>
+          {/* <Link to={`/movies/${movie.id}`}> */}
             {/* <Button variant="outlined" size="medium" color="primary">
               More Info ...
             </Button> */}
@@ -112,7 +112,7 @@ export default function MovieCard({ movie, action }) {
             <VisibilityIcon />
             </IconButton> 
             </Tooltip> 
-          </Link>
+          {/* </Link> */}
       </CardActions> }
     </Card>
     </Link>

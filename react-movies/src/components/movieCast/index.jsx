@@ -30,7 +30,7 @@ export default function MovieCast({ movie }) {
        <>
         <Grid container spacing={2}>
           {cast.map((c) => (
-          <Grid size={6}>
+          <Grid size={6} key={c.id}>
             <Card>
               <CardMedia
               component="img"
