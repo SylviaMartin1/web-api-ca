@@ -98,6 +98,86 @@ export const getMovie = async (id) => {
 };
 
 
+export const getMovieImages = async (id) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.TMDB_KEY}`
+    );
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.response.json().message);
+    }
+
+    return await response.json();
+};
+
+export const getMovieReviews = async (id) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.TMDB_KEY}`
+    );
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.response.json().message);
+    }
+
+    return await response.json();
+};
+
+export const getMovieRecommendations = async (id) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.TMDB_KEY}`
+    );
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.response.json().message);
+    }
+
+    return await response.json();
+};
+
+export const getMovieCredits = async (id) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.TMDB_KEY}`
+    );
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.status_message || "Something went wrong");
+    }
+
+    return await response.json();
+};
+
+export const getMovieStreamingProviders = async (id) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.TMDB_KEY}`
+    );
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.status_message || "Something went wrong");
+    }
+
+    return await response.json();
+};
+
+export const getSimilarMovies = async (id) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_KEY}`
+    );
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.status_message || "Something went wrong");
+    }
+
+    return await response.json();
+};
+
+
+
 
 
 
