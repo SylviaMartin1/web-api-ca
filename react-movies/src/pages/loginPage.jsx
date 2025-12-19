@@ -25,18 +25,20 @@ const LoginPage = () => {
 
     return (
         <>
-            <h2 style={{ color: "white" }}>Login page</h2>
-            <p style={{ color: "white" }}>You must log in to view the protected pages</p>
-            <input id="username" placeholder="user name" onChange={e => {
+            <h2 style={{ color: "white", textAlign: "center", fontSize: "36px" }}>Login </h2>
+            <p style={{ color: "white", textAlign: "center" }}>You must log in to view the protected pages</p>
+            <div style={{ textAlign: "center"}}>
+            <input id="username" placeholder="user name" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
                 setUserName(e.target.value);
             }}></input><br />
-            <input id="password" type="password" placeholder="password" onChange={e => {
+            <input id="password" type="password" placeholder="password" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
                 setPassword(e.target.value);
             }}></input><br />
             {/* Login web form  */}
+            
             <button onClick={login}>Log in</button>
-            <p>Not Registered?
-                <Link to="/signup">Sign Up!</Link></p>
+            <p style={{ color: "white" }} >Not Registered? <Link style={{ color: "#b0060f" }} to="/signup">Sign Up!</Link></p>
+            </div>
         </>
     );
 };

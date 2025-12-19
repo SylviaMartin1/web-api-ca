@@ -2,6 +2,7 @@ import React from "react";
 import { useContext, useState } from "react";
 import { Navigate } from "react-router";
 import { AuthContext } from '../contexts/authContext';
+import InfoButton from "../components/infoButton";
 
 const SignUpPage = () => {
   const context = useContext(AuthContext)
@@ -44,26 +45,43 @@ const SignUpPage = () => {
 
   return (
     <>
-      <h2>SignUp page</h2>
-      <p>You must register a username and password to log in. Usernames must be unique and passwords must contain a minimum of 8 characters (with at least one uppercase letter, one lowercase letter, and one symbol). </p>
-      <input value={userName} placeholder="user name" onChange={e => {
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", marginBottom: "20px"}}>
+     <InfoButton description={
+        `Usernames must be 3-20 characters and contain only letters and numbers.
+        Passwords must be at least 8 characters long and include:
+        • Uppercase letter
+        • Lowercase letter
+        • Number
+        • Symbol`
+          } />
+      <h2 style={{ color: "white", textAlign: "center", fontSize: "36px" }}>Sign Up</h2>
+      </div>
+     
+           <div style={{ textAlign: "center"}}>
+      <input value={userName} placeholder="user name" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
         setUserName(e.target.value);
       }}></input><br />
       {usernameError && <p style={{color: "red"}}>{usernameError}</p>}
+      
 
 
-      <input value={password} type="password" placeholder="password" onChange={e => {
+      <input value={password} type="password" placeholder="password" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
         setPassword(e.target.value);
       }}></input><br />
       {passwordError && <p style={{color: "red"}}>{passwordError}</p>}
 
-      <input value={passwordAgain} type="password" placeholder="password again" onChange={e => {
+      <input value={passwordAgain} type="password" placeholder="password again" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
         setPasswordAgain(e.target.value);
       }}></input><br />
       {passwordMatchError && <p style={{color: "red"}}>{passwordMatchError}</p>}
 
       {/* Login web form  */}
-      <button onClick={register}>Register</button>
+      <button  
+      style={{
+        fontSize: "15px"
+      }}
+      onClick={register}>Register</button>
+      </div>
     </>
   );
 };
