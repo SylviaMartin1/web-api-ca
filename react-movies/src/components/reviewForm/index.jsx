@@ -9,6 +9,7 @@ import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router";
 import React, { useState, useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { addReview } from "../../api/reviews-api";
 
 const ratings = [
   {
@@ -93,13 +94,15 @@ const ReviewForm = ({ movie }) => {
     setRating(event.target.value);
   };
 
-    const onSubmit = (review) => {
+    const onSubmit = async (review) => {
     review.movieId = movie.id;
     review.rating = rating;
     console.log(review);
-    context.addReview(movie, review);
+   // context.addReview(movie, review);
+   await addReview(review);
     setOpen(true); // NEW
   };
+
 
 
   return (

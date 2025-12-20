@@ -28,7 +28,7 @@ const LoginPage = () => {
             <h2 style={{ color: "white", textAlign: "center", fontSize: "36px" }}>Login </h2>
             <p style={{ color: "white", textAlign: "center" }}>You must log in to view the protected pages</p>
             <div style={{ textAlign: "center"}}>
-            <input id="username" placeholder="user name" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
+            <input id="username" placeholder="username" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
                 setUserName(e.target.value);
             }}></input><br />
             <input id="password" type="password" placeholder="password" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {

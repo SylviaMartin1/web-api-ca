@@ -19,6 +19,7 @@ import UpcomingMoviesPage from './pages/upcomingMoviesPage';
 import TrendingMoviesPage from './pages/trendingMoviesPage';
 import TopRatedMoviesPage from './pages/topRatedMoviesPage';
 import MoviesPlayingInTheatresPage from './pages/moviesPlayingInTheatresPage';
+import MyReviewsPage from "./pages/myReviewsPage";
 import MustWatchPage from './pages/mustWatchPage';
 import theme from './theme'
 import { ThemeProvider } from '@mui/material/styles';
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/signup" element={< SignupPage />} />
             <Route element={<ProtectedRoutes />}>
             <Route path="/profile" element={< ProfilePage />} />
+             <Route path="/myReviews" element={<MyReviewsPage />} />
             <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
             <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route path="/movies/trending" element={<TrendingMoviesPage />} />

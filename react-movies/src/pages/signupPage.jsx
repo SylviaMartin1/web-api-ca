@@ -58,7 +58,7 @@ const SignUpPage = () => {
       </div>
      
            <div style={{ textAlign: "center"}}>
-      <input value={userName} placeholder="user name" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
+      <input value={userName} placeholder="username" style={{ width: "300px", marginBottom: "10px" }} onChange={e => {
         setUserName(e.target.value);
       }}></input><br />
       {usernameError && <p style={{color: "red"}}>{usernameError}</p>}

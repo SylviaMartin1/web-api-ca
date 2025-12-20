@@ -21,6 +21,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Tooltip from '@mui/material/Tooltip';
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import Person2Icon from '@mui/icons-material/Person2';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -43,6 +44,7 @@ const SiteHeader = () => {
     { label: <FavoriteIcon />, path: "/movies/favorites", title: "Favourites" }, //Favourite page
     { label: <PlaylistPlayIcon />, path: "/movies/mustWatch", title: "Watchlist" }, //Watchlist page
     { label: <Person2Icon />, path: "/profile" , title: "Profile"}, //Profile page
+    { label: <ReviewsIcon />, path: "/myReviews" , title: "My Reviews"} //Reviews page
   ];
 
   const handleMenuSelect = (pageURL) => {

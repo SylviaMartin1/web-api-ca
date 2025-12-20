@@ -15,6 +15,12 @@ router.get('/', async (req, res) => {
     res.status(200).json(reviews);
 });
 
+//Get all reviews for a specific movie
+router.get('/movie/:movieId', asyncHandler(async (req, res) => {
+  const reviews = await Review.find({ movieId: req.params.movieId });
+  res.status(200).json(reviews);
+}));
+
 // Add a review
 router.post('/', asyncHandler(async (req, res) => {
     const newReview = req.body;
@@ -48,10 +54,5 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-// Get all reviews for a specific movie
-router.get('/movie/:id/reviews', asyncHandler(async (req, res) => {
-    const reviews = await Review.find({ movieId: Number(req.params.id) });
-    res.status(200).json(reviews);
-}));
 
 export default router;
