@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 
 
 //2. Main Functionality
-export default function StatsButton({ }) {
+export default function StatsButton({}) {
     const [open, setOpen] = useState(false); 
     const handleOpen = () => setOpen(true);   
     const handleClose = () => setOpen(false); 

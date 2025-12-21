@@ -11,6 +11,8 @@ const ProfilePage = () => {
         <p style={{ color: "white" }}>
             User profile: {context.userName}
         </p>
+
+
     ) : (
         <p style={{ color: "white" }}>
             You must log in to see your profile! {" "}

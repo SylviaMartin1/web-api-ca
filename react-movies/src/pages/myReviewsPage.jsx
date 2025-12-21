@@ -33,7 +33,7 @@ const MyReviewsPage = () => {
           key={review._id}
           author={review.author}
           rating={review.rating}
-          content={review.content}
+          content={review.review}
         >
           <button onClick={() => handleDelete(review._id)}>
             Delete

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { AuthContext } from "../../contexts/authContext";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Tooltip from '@mui/material/Tooltip';
@@ -9,11 +10,12 @@ import { Link } from "react-router";
 
 const AddToFavoritesIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
+  const { userName } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
   const handleAddToFavorites = (e) => {
     e.preventDefault();
-    context.addToFavorites(movie);
+    context.addToFavorites(movie, userName);
     setOpen(true);
   };
 
