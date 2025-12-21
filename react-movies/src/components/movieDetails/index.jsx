@@ -17,6 +17,7 @@ import InfoButton from "../infoButton";
 import { Link } from "react-router";
 import AddToFavoritesIcon from "../cardIcons/addToFavorites";
 import AddToMustWatchIcon from "../cardIcons/addToMustWatch";
+import MyReviewForMovie from "../myReviewForMovie";
 
 const root = {
     display: "flex",
@@ -115,11 +116,18 @@ const [drawerOpen, setDrawerOpen] = useState(false);
        <MovieCast movie={movie} />
       </Paper>
 
+      <Paper component="ul" sx={{...root, mt:6, display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+        <Typography variant="h5" component="h3" sx={{ mb: 2, fontWeight: "bold", color:"#fff" }} >
+        My Reviews
+      </Typography>
+      <MyReviewForMovie movieId={movie.id} />
+       </Paper>
+
+
       <Paper component="div" sx={{ mt: 6 }}>
       <Typography variant="h5" component="h3" sx={{ mb: 2, fontWeight: "bold", color:"#fff" }} >
-        Jump To
+         Jump To
         </Typography>
-
       <Paper component="ul" sx={{...root, mt:0, justifyContent: "flex-start", display: 'flex', flexDirection: 'row', alignItems: 'flex-start'}}>
        <AddToFavoritesIcon movie={movie} sx={{color:"pink"}} />
        <AddToMustWatchIcon movie={movie} sx={{color: "orange"}}/>
@@ -186,8 +194,9 @@ const [drawerOpen, setDrawerOpen] = useState(false);
           sx={{ ...{ color: "#fff" }, margin: 0.5 }}
           />
         </Link>
+         </Paper>
       </Paper>
-      </Paper>
+
 
       <Fab
         color="secondary"

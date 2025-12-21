@@ -5,8 +5,6 @@ import MyReviewCard from "../components/myReviewCard";
 const MyReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
 
-  
-
   useEffect(() => {
     getUserReviews()
       .then((data) => setReviews(data))
