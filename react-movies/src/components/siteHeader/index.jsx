@@ -43,7 +43,6 @@ const SiteHeader = () => {
     { label: <MovieIcon />, path: "/movies/upcoming", title: "Upcoming Movies" }, //Upcoming Movies page
     { label: <FavoriteIcon />, path: "/movies/favorites", title: "Favourites" }, //Favourite page
     { label: <PlaylistPlayIcon />, path: "/movies/mustWatch", title: "Watchlist" }, //Watchlist page
-    { label: <Person2Icon />, path: "/profile" , title: "Profile"}, //Profile page
     { label: <ReviewsIcon />, path: "/myReviews" , title: "My Reviews"} //Reviews page
   ];
 

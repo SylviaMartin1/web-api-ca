@@ -49,7 +49,10 @@ router.delete('/:id', async (req, res) => {
 
 //Get all reviews for a specific movie
 router.get('/movie/:movieId', asyncHandler(async (req, res) => {
-  const reviews = await Review.find({ movieId: req.params.movieId });
+  const reviews = await Review.find({
+     movieId: req.params.movieId,
+     userId: req.user._id
+    });
   res.status(200).json(reviews);
 }));
 
