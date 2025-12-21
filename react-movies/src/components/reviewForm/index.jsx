@@ -65,7 +65,6 @@ const styles = {
 const ReviewForm = ({ movie }) => {
   const context = useContext(MoviesContext);
 
-
   const [rating, setRating] = useState(3);
 
   const [open, setOpen] = useState(false); 
@@ -102,8 +101,6 @@ const ReviewForm = ({ movie }) => {
    await addReview(review);
     setOpen(true); // NEW
   };
-
-
 
   return (
     <Box component="div" sx={styles.root}>

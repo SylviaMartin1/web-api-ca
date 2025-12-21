@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getUserReviews, deleteReview } from "../api/reviews-api";
+import MyReviewCard from "../components/myReviewCard";
 
 const MyReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
+
+  
 
   useEffect(() => {
     getUserReviews()
@@ -19,29 +22,27 @@ const MyReviewsPage = () => {
     <div style={{ color: "white", padding: "1rem" }}>
       <h2>My Reviews</h2>
       {reviews.length === 0 && <p>No reviews yet.</p>}
+      <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        padding: "1rem",
+        overflowX: "auto"
+      }}
+    >
       {reviews.map((review) => (
-        <div
+       <MyReviewCard
           key={review._id}
-          style={{
-            border: "1px solid gray",
-            padding: "1rem",
-            marginBottom: "1rem",
-            borderRadius: "5px",
-          }}
+          author={review.author}
+          rating={review.rating}
+          content={review.content}
         >
-          <p>
-            <strong>Movie ID:</strong> {review.movieId}
-          </p>
-          <p>
-            <strong>Author:</strong> {review.author}
-          </p>
-          <p>
-            <strong>Rating:</strong> {review.rating} / 5
-          </p>
-          <p>{review.content}</p>
-          <button onClick={() => handleDelete(review._id)}>Delete</button>
-        </div>
+          <button onClick={() => handleDelete(review._id)}>
+            Delete
+          </button>
+        </MyReviewCard>
       ))}
+      </div>
     </div>
   );
 };

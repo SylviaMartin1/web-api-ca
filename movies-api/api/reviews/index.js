@@ -7,19 +7,12 @@ const router = express.Router();
 
 router.use(authenticate);
 
-
 // Get all reviews of a specific user
 router.get('/', async (req, res) => {
     console.log(req.user);
     const reviews = await Review.find({ userId: `${req.user._id}`});
     res.status(200).json(reviews);
 });
-
-//Get all reviews for a specific movie
-router.get('/movie/:movieId', asyncHandler(async (req, res) => {
-  const reviews = await Review.find({ movieId: req.params.movieId });
-  res.status(200).json(reviews);
-}));
 
 // Add a review
 router.post('/', asyncHandler(async (req, res) => {
@@ -53,6 +46,12 @@ router.delete('/:id', async (req, res) => {
         res.status(404).json({ code: 404, msg: 'Unable to find Review' });
     }
 });
+
+//Get all reviews for a specific movie
+router.get('/movie/:movieId', asyncHandler(async (req, res) => {
+  const reviews = await Review.find({ movieId: req.params.movieId });
+  res.status(200).json(reviews);
+}));
 
 
 export default router;

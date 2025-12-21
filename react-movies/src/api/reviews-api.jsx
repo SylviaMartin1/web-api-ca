@@ -43,7 +43,7 @@ export const deleteReview = async (id) => {
 
 export const getMovieReviews = async (movieId) => {
   const response = await fetch(
-    `http://localhost:8080/api/reviews/movie/${movieId}/reviews`,
+    `http://localhost:8080/api/reviews/movie/${movieId}`,
     {
       headers: {
         Authorization: window.localStorage.getItem("token"),
